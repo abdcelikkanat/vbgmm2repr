@@ -64,15 +64,22 @@ x1, x2 = shuffle(x1, x2)
 
 model = BayesianGaussianMixture(n_components=2,
                                 covariance_type="full",
-                                max_iter=100,
+                                max_iter=1,
                                 init_params="random",
                                 weight_concentration_prior_type="dirichlet_process",
-                                verbose=1, verbose_interval=10)
+                                verbose=0, verbose_interval=10)
 data = np.asarray([x1, x2]).T
 
+num_of_iters = 100
+#for i in range(num_of_iters):
+params = {}
+for i in range(num_of_iters):
+    if i != 0:
+        model.set_params(params)
+    model.fit(data)
+    params = model.get_params()
 
-model.fit(data)
-print(model.get_params())
+#print(model.get_params())
 
 plot_results(data, model.predict(data), model.means_, model.covariances_, 0, 'GMM')
 

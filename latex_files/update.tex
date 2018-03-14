@@ -1,0 +1,36 @@
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\begin{document}
+Let $\gamma_{s,t}^{w}$ be a path from the node $s$ to $t$ of length less than $w$
+
+
+Let $\mathcal{N}^w(s) := \{v: \forall \gamma_{s,v}\}$
+
+
+Let $f(\theta, \beta) := \prod_{s \in \mathcal{V}}\prod_{t\in \mathcal{N}^{w}(s)}p(t | s) = \prod_{s \in \mathcal{V}}\prod_{t\in \mathcal{N}^{w}(s)}\sum_{\gamma_{s, t}}\prod_{(x_i,x_{i+1})\in \gamma_{s, t}}\sigma(\beta(x_i)\theta(x_{i+1}))$ \\
+and $\log f = \sum_{s \in \mathcal{V}}\sum_{t\in \mathcal{N}^{w}(s)}\log\left( \sum_{\gamma_{s, t}}p(t | s) \right)$
+
+
+Let $l_{s,t}(\theta, \beta)  = \log\left( \sum_{\gamma_{s, t}}p(t | s) \right) = log\left( \sum_{\gamma_{s, t}} \sigma(\theta(t)\beta(s) \right)$ Yanlis
+
+
+\textbf{Update equations}
+
+Let $\zeta := x_1,x_2,\cdots, x_k$ be a path of size $k$ from $s$ to $t$ where $k \leq w$, $x_1 = s$, and $x_k=t$ 
+
+$$
+\frac{\delta l(\theta, \beta)}{\theta(t)} = \frac{ \sum_{\zeta \in \gamma_{s,t}}\prod_{(x_i,x_{i+1})\in \zeta} \sigma(\beta(x_{i-1})\theta(x_i))(1-\sigma(\beta(x_{|\zeta|-1})\theta(t)))\beta(x_{|\zeta|-1}) }{ \sum_{\zeta \in \gamma_{s,t}}\prod_{(x_i,x_{i+1})\in \zeta}\sigma(\beta(x_i)\theta(x_{i+1})) }
+$$
+
+and
+
+$$
+\frac{\delta l(\theta, \beta)}{\beta(s)} = \frac{ \sum_{\zeta \in \gamma_{s,t}}\prod_{(x_i,x_{i+1})\in \zeta} \sigma(\beta(x_{i-1})\theta(x_i))(1-\sigma(\beta(s)\theta(x_2)))\theta(x_{2}) }{ \sum_{\zeta \in \gamma_{s,t}}\prod_{(x_i,x_{i+1})\in \zeta}\sigma(\beta(x_i)\theta(x_{i+1})) } \star$$ 
+
+
+\end{document}
