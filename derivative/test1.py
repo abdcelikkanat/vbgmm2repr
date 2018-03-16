@@ -1,6 +1,7 @@
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
+from random import shuffle
 
 def get_nb_list(g):
     return [[int(nb) for nb in nx.neighbors(g, str(node))] for node in range(g.number_of_nodes())]
@@ -55,7 +56,7 @@ def total_score(paths, B, T):
             if len(paths[s][t]) > 0:
                 path_sums = 0.0
                 for p in paths[s][t]:
-                    path_sums += np.prod([sigma(B[p[i], :], T[i+1, :]) for i in range(len(p)-1)])
+                    path_sums += np.prod([sigma(B[p[i], :], T[p[i+1], :]) for i in range(len(p)-1)])
 
                 log_sum += path_sums
 
@@ -66,13 +67,14 @@ def run():
     n = g.number_of_nodes()
 
     dim = 2
-    w = 3
+    w = 2
     num_of_paths = 100
 
 
     ## Generate paths
     paths = [[[] for _ in range(n)] for _ in range(n)]
 
+    mypaths = []
     for node in g.nodes():
         for _ in range(num_of_paths):
             p = [int(node)]
@@ -85,22 +87,34 @@ def run():
                     chosen_node = node
 
                 p.append(int(chosen_node))
-
+            #print(p)
             paths[p[0]][p[-1]].append(p)
-
+            mypaths.append(p)
 
     # Initialize vectors
     B = np.random.normal(size=(n, dim))
     T = np.random.normal(size=(n, dim))
+    for i in range(T.shape[0]):
+        B[i, :] = B[i, :] / np.sum(B[i, :])
+        T[i, :] = T[i, :] / np.sum(T[i, :])
 
     # Update
-    num_of_iters = 20
+
+    num_of_iters = 10
+    for _ in range(num_of_iters):
+        shuffle(mypaths)
+        for p in mypaths:
+            update(paths=paths[s][t], B=B, T=T, eta=0.001)
+    """
+    num_of_iters = 10
     for _ in range(num_of_iters):
         for s in range(n):
             for t in range(n):
                 if len(paths[s][t]) > 0:
                     update(paths=paths[s][t], B=B, T=T, eta=0.001)
-
+        #print("B: {}".format(B))
+        #print("T: {}".format(T))
         total_score(paths, B, T)
         #print(T)
+    """
 run()
