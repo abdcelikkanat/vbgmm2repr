@@ -15,7 +15,7 @@ edges = example1
 #g = nx.Graph()
 #g.add_edges_from(edges)
 
-g = nx.read_gml("../datasets/karate.gml")
+
 
 """
 plt.figure()
@@ -23,6 +23,8 @@ nx.draw(g)
 plt.show()
 """
 
+
+""" ------------------------------
 N = g.number_of_nodes()
 D = 1
 K = 2
@@ -84,28 +86,13 @@ for iter in range(num_of_iters):
 
         # Make coefficient non-negative
         F[node, :, :] = (F[node, :, :] + np.abs(F[node, :, :])) / 2.0 + 1e-8
+"""
 
 
 
-    """
-        err = 0.0
-        for nb_node in g.nodes():
-            prod = np.sum([np.dot(F[node, k, :], F[nb_node, k, :]) for k in range(K)])
-            res = 1.0 - np.exp(-prod)
 
 
-            if nb_node in nb_list[node]:
-                err += np.abs(1.0 - res)
-            else:
-                err += np.abs(res)
-
-        err = err / g.number_of_nodes()
-
-        print(err)
-    """
-M = np.arange(0, 27).reshape((3,3,3))
-
-
+""" ------------------------------
 print(logF)
 
 edges = [[np.dot(F[node, :, 0], F[nb, :, 0]) for nb in range(N)] for node in range(N) ]
@@ -122,69 +109,97 @@ for node in range(N):
     if F[node, max_k, :] > delta:
             clusters[max_k].append(str(node))
 
-
-"""
-plt.figure()
-plt.plot(F[:4, 0, 0], F[:4, 0, 1], 'r.')
-plt.plot(F[:4, 1, 0], F[:4, 1, 1], 'b.')
-plt.plot(F[4:, 0, 0], F[4:, 0, 1], 'rx')
-plt.plot(F[4:, 1, 0], F[4:, 1, 1], 'bx')
-plt.show()
-
-"""
-x = np.asarray([[F[node, k, 0] for k in range(K)] for node in range(N)])
-
-"""
-plt.figure()
-plt.plot(x[:4,0], x[:4, 1], 'x')
-plt.plot(x[4:,0], x[4:, 1], 'rx')
-plt.show()
 """
 
-"""
-plt.figure()
-plt.plot(x[:, 0], x[:, 1], 'x')
-plt.show()
-"""
+def one_iter(g, F, node):
+    # Find F_sum
 
-plt.figure()
-pos = nx.spring_layout(g)
-colors = ['r', 'b', 'g', 'b', 'v', 'y', 'p']
-for k in range(K+1):
-    nx.draw_networkx_nodes(g, pos, nodelist=clusters[k],
-                           node_color=colors[k],
-                           node_size=100,
-                           alpha=0.8)
-nx.draw_networkx_labels(g, pos, labels={node: int(node) for node in g.nodes()}, font_size=9)
-nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.5)
+    F_sum = np.zeros(shape=F.shape[1], dtype=np.float)
 
-plt.show()
+    for v in g.nodes():
+        if v not in nx.neighbors(g, node):
+            F_sum += F[int(v), :]
 
 
-plt.figure()
-for node in clusters[0]:
-    plt.plot(FF[int(node), 0, 0], FF[int(node), 1, 0], 'rx')
-for node in clusters[1]:
-    plt.plot(FF[int(node), 0, 0], FF[int(node), 1, 0], 'bx')
-plt.show()
+    # Take derivative wrt F[node, :]
+    grad_sum = 0.0
+    for v in nx.neighbors(g, node):
+        grad_sum += F[int(v), :] * (1.0 / (np.exp(np.dot(F[int(v), :], F[int(node), :])) - 1.0 + 1e-8))
+    grad_sum -= F_sum
+
+    return grad_sum
+
+def compute_score(g, F):
+    score = 0.0
+    for v in g.nodes():
+        for u in g.nodes():
+            if g.has_edge(v, v):
+                score += np.log(1.0 - np.exp(-np.dot(F[int(v), :], F[int(u), :])))
+            else:
+                score -= np.dot(F[int(v), :], F[int(u), :])
+    return score
+
+def find_clusters(g, F, delta, K):
+    clusters = [[] for _ in range(K+1)]
+
+    for node in g.nodes():
+        k_max = np.argmax(F[int(node), :])
+        if F[int(node), k_max] > delta:
+            clusters[k_max].append(node)
+            #print("Node {}, Cluster {}".format(node, k_max))
+
+    return clusters
+
+def draw_graph(g, clusters):
+    K = len(clusters)
+
+    plt.figure()
+    pos = nx.spring_layout(g)
+    colors = ['r', 'b', 'g', 'b', 'v', 'y', 'p']
+    for k in range(K):
+        nx.draw_networkx_nodes(g, pos, nodelist=clusters[k],
+                               node_color=colors[k],
+                               node_size=100,
+                               alpha=0.5)
+    nx.draw_networkx_labels(g, pos, labels={node: int(node) for node in g.nodes()}, font_size=9)
+    nx.draw_networkx_edges(g, pos, width=1.0, alpha=0.5)
+
+    plt.show()
+
+def run():
+    dataset = "../datasets/citeseer.gml"
+    g = nx.read_gml(dataset)
+    N = g.number_of_nodes()
+    K = 6
+    dim = 1
+    eta = 0.0001
+    num_of_iters = 500
 
 
+    # Initialize parameter
+    F = np.asarray(np.random.normal(size=(N, K)))
+    F = np.absolute(F)
 
-FF[:, :, :] = (FF[:, :, :] + np.absolute(FF[:, :, :])) / 2.0
-plt.figure()
-for node in clusters[0]:
-    plt.plot(FF[int(node), 0, 0], FF[int(node), 1, 0], 'rx')
-for node in clusters[1]:
-    plt.plot(FF[int(node), 0, 0], FF[int(node), 1, 0], 'bx')
-plt.show()
+    scores = np.zeros(num_of_iters, dtype=np.float)
+    for iter in range(num_of_iters):
+        for u in g.nodes():
+            grad = one_iter(g, F, u)
+            # Update
+            F[int(u), :] = F[int(u), :] + eta*grad
 
-x = np.asarray(FF[:, :, 0])
-print(x.shape)
-x = x - np.mean(x, axis=0)
+            F[int(u), :] = (F[int(u), :] + np.absolute(F[int(u), :])) / 2.0
 
-plt.figure()
-for node in clusters[0]:
-    plt.plot(x[int(node), 0], x[int(node), 1], 'rx')
-for node in clusters[1]:
-    plt.plot(x[int(node), 0], x[int(node), 1], 'bx')
-plt.show()
+        scores[iter] = compute_score(g, F)
+        print("Iter: {}, Score: {}".format(iter, scores[iter]))
+        if iter > 1:
+            if abs(scores[iter-1]-scores[iter]) < 0.01:
+                break
+
+    #epsilon = (2.0 * g.number_of_edges()) / (N * (N-1))
+    epsilon = 1e-8
+    delta = np.sqrt(-np.log(1 - epsilon))
+    clusters = find_clusters(g, F, delta, K)
+
+    draw_graph(g, clusters)
+
+run()
