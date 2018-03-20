@@ -172,8 +172,8 @@ def run():
     N = g.number_of_nodes()
     K = 6
     dim = 1
-    eta = 0.0001
-    num_of_iters = 500
+    eta = 0.000001
+    num_of_iters = 3000
 
 
     # Initialize parameter
