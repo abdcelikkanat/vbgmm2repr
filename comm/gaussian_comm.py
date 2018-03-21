@@ -33,11 +33,11 @@ def find_neighbors(g):
 def grad_T(g, B, T, nb_list, node):
     N = g.number_of_nodes()
 
-    normalizer = 2.0
+    normalizer = 1.0
 
     grad_sum = 0.0
     for v in nb_list[node]:
-        grad_sum += (B[v, :] - T[node, :]) / normalizer
+        grad_sum += +(T[node, :] - B[v, :]) / normalizer
 
     return grad_sum
 
@@ -48,7 +48,7 @@ def grad_B(g, B, T, nb_list, node):
 
     grad_sum = 0.0
     for u in nb_list[node]:
-        grad_sum += -(B[node, :] - T[u, :]) / normalizer
+        grad_sum += -(T[u, :] - B[node, :]) / normalizer
 
     return grad_sum
 
@@ -61,7 +61,7 @@ def compute_score(g, B, T ,nb_list):
     score = 0.0
     for v in range(N):
         for u in nb_list[v]:
-            score += -np.dot(B[v, :] - T[u, :], B[v, :] - T[u, :]) / normalizer
+            score += +np.dot(T[u, :] - B[v, :], T[u, :] - B[v, :]) / normalizer
 
     return score
 
@@ -103,11 +103,11 @@ def run(g, dim, num_of_iters, eta):
             node_grad_B = grad_T(g, B, T, nb_list, node)
 
 
-            B[node, :] += eta * node_grad_B
+            B[node, :] += -eta * node_grad_B
 
-            T[node, :] += eta * node_grad_T
+            T[node, :] += -eta * node_grad_T
 
-        score = compute_score(g, B, T ,nb_list)
+        score = compute_score(g, B, T, nb_list)
         print("Iter: {} Score {}".format(iter, score))
         #np.save("./citeseer_F_iter_{}".format(iter), F)
 
@@ -117,8 +117,8 @@ def run(g, dim, num_of_iters, eta):
 edges = example1
 #g = nx.Graph()
 #g.add_edges_from(edges)
-g = nx.read_gml("../datasets/citeseer.gml")
+g = nx.read_gml("../datasets/karate.gml")
 
-B, T = run(g, dim=128, num_of_iters=1000, eta=0.01)
-np.save("./numpy_files/citeseer_gaussian_final", T)
-#draw_points(B, T, "Karate", g)
+B, T = run(g, dim=2, num_of_iters=500, eta=0.01)
+#np.save("./numpy_files/citeseer_gaussian_final", T)
+draw_points(B, T, "Karate", g)

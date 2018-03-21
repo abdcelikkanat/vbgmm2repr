@@ -126,7 +126,7 @@ def run(g, dim, num_of_iters, eta):
     # Initialize parameters
     F = np.random.normal(size=(N, dim))
     F = np.absolute(F)
-    nb_counts = find_neighbors2(g)
+    nb_counts = find_neighbors(g)
 
     for iter in range(num_of_iters):
         for node in range(N):
@@ -138,7 +138,7 @@ def run(g, dim, num_of_iters, eta):
 
         score = compute_score(g, F, nb_counts)
         print("Iter: {} Score {}".format(iter, score))
-        np.save("./citeseer_F_iter_{}".format(iter), F)
+        #np.save("./citeseer_F_iter_{}".format(iter), F)
 
     return F
 
@@ -146,8 +146,8 @@ def run(g, dim, num_of_iters, eta):
 edges = example1
 #g = nx.Graph()
 #g.add_edges_from(edges)
-g = nx.read_gml("../datasets/citeseer.gml")
+g = nx.read_gml("../datasets/karate.gml")
 
-F = run(g, dim=256, num_of_iters=100, eta=0.00001)
+F = run(g, dim=2, num_of_iters=800, eta=0.001)
 
-#draw_points(F, "Karate", g)
+draw_points(F, "Karate", g)
