@@ -120,36 +120,36 @@ def run(g, dim, num_of_iters, eta):
     dist = []
 
     for iter in range(num_of_iters):
-        if iter % 10 == 0:
-            draw_points(B, T, "Karate", g, base=True)
+        #if iter % 10 == 0:
+        #    draw_points(B, T, "Karate", g, base=True)
         for node in range(N):
 
             node_grad_B = grad_T(g, B, T, nb_list, node, dist)
-            """
+
             for nb in nb_list[int(node)]:
                 node_grad_T = grad_T(g, B, T, nb_list, nb, dist)
                 T[nb, :] += eta * node_grad_T
             """
             node_grad_T = grad_T(g, B, T, nb_list, node, dist)
             T[node, :] += eta * node_grad_T
-
+            """
             B[node, :] += eta * node_grad_B
 
 
         score = compute_score(g, B, T, nb_list, dist)
         print("Iter: {} Score {}".format(iter, score))
 
-    draw_points(B, T, "Karate", g, base=False)
+    #draw_points(B, T, "Karate", g, base=False)
 
     return B, T
 
 
-edges = example1
+#edges = example1
 #g = nx.Graph()
 #g.add_edges_from(edges)
-g = nx.read_gml("../datasets/karate.gml")
+g = nx.read_gml("../datasets/citeseer.gml")
 
 
-B, T = run(g, dim=2, num_of_iters=100, eta=0.01)
-#np.save("./numpy_files/citeseer_gaussian_convergent", T)
-draw_points(B, T, "Karate", g)
+B, T = run(g, dim=128, num_of_iters=300, eta=0.001)
+np.save("./numpy_files/citeseer_gaussian_v3", T)
+#draw_points(B, T, "Karate", g)
