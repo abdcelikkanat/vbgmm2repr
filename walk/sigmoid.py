@@ -39,6 +39,12 @@ def find_neighbors(g):
                 for nb_nb in nx.neighbors(g, nb):
                     if int(nb_nb) not in nb_list[int(node)]:
                         nb_list[int(node)].append(int(nb_nb))
+                        for nb_nb_nb in nx.neighbors(g, nb_nb):
+                            if int(nb_nb_nb) not in nb_list[int(node)]:
+                                nb_list[int(node)].append(int(nb_nb_nb))
+                                for nb_nb_nb_nb in nx.neighbors(g, nb_nb_nb):
+                                    if int(nb_nb_nb_nb) not in nb_list[int(node)]:
+                                        nb_list[int(node)].append(int(nb_nb_nb_nb))
 
 
     return nb_list

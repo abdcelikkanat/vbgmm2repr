@@ -154,5 +154,5 @@ g = nx.read_gml("../datasets/citeseer.gml")
 
 
 B, T = run(g, dim=128, num_of_iters=500, eta=0.01)
-np.save("../comm/numpy_files/gaussian_yeni_v1", T)
+np.save("../comm/numpy_files/citeseer_gaussian_yeni", T)
 #draw_points(B, T, "citeseer", g)

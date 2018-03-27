@@ -22,10 +22,10 @@ def find_neighbors(g):
     for node in g.nodes():
         for nb in nx.neighbors(g, node):
             if int(nb) not in nb_list[int(node)]:
-                #nb_list[int(node)].append(int(nb))
-                for nb_nb in nx.neighbors(g, nb):
-                    if int(nb_nb) not in nb_list[int(node)]:
-                        nb_list[int(node)].append(int(nb_nb))
+                nb_list[int(node)].append(int(nb))
+            for nb_nb in nx.neighbors(g, nb):
+                if int(nb_nb) not in nb_list[int(node)]:
+                    nb_list[int(node)].append(int(nb_nb))
 
         if int(node) in nb_list[int(node)]:
             nb_list[int(node)].remove(int(node))

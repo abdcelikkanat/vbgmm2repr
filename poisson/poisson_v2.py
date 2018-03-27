@@ -168,9 +168,10 @@ def run(g, dim, num_of_iters, eta):
 edges = example1
 #g = nx.Graph()
 #g.add_edges_from(edges)
-g = nx.read_gml("../datasets/karate.gml")
+
+g = nx.read_gml("../datasets/citeseer.gml")
 
 
-F = run(g, dim=2, num_of_iters=100, eta=0.01)
-#np.save("../comm/numpy_files/citeseer_poisson_v2", F)
-draw_points(F, "Karate", g)
+F = run(g, dim=128, num_of_iters=500, eta=0.001)
+np.save("../comm/numpy_files/citeseer_poisson_v2", F)
+#draw_points(F, "Karate", g)

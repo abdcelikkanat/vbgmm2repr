@@ -2,13 +2,13 @@ import numpy as np
 import networkx as nx
 
 
-F = np.load("./numpy_files/citeseer_sigmoid.npy")
+F = np.load("./numpy_files/citeseer_gaussian_yeniden.npy")
 
 g = nx.read_gml("../datasets/citeseer.gml")
 
 n = g.number_of_nodes()
 
-with open("citeseer_sigmoid.embedding", 'w') as f:
+with open("citeseer_gaussian_yeniden.embedding", 'w') as f:
     f.write("{} {}\n".format(n, F.shape[1]))
     for node in g.nodes():
         line = [str(val) for val in F[int(node), :]]
