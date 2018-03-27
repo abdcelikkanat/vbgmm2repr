@@ -36,9 +36,9 @@ def find_neighbors(g):
         for nb in nx.neighbors(g, node):
             if int(nb) not in nb_list[int(node)]:
                 nb_list[int(node)].append(int(nb))
-                for nb_nb in nx.neighbors(g, nb):
-                    if int(nb_nb) not in nb_list[int(node)]:
-                        nb_list[int(node)].append(int(nb_nb))
+            for nb_nb in nx.neighbors(g, nb):
+                if int(nb_nb) not in nb_list[int(node)]:
+                    nb_list[int(node)].append(int(nb_nb))
 
 
     return nb_list
@@ -124,7 +124,7 @@ def run(g, dim, num_of_iters, eta):
         #    draw_points(B, T, "Karate", g, base=True)
         for node in range(N):
 
-            node_grad_B = grad_T(g, B, T, nb_list, node, dist)
+            node_grad_B = grad_B(g, B, T, nb_list, node, dist)
 
             for nb in nb_list[int(node)]:
                 node_grad_T = grad_T(g, B, T, nb_list, nb, dist)
@@ -153,3 +153,4 @@ g = nx.read_gml("../datasets/citeseer.gml")
 B, T = run(g, dim=128, num_of_iters=300, eta=0.001)
 np.save("./numpy_files/citeseer_gaussian_v3", T)
 #draw_points(B, T, "Karate", g)
+
