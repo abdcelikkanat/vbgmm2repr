@@ -2,6 +2,18 @@ import numpy as np
 import networkx as nx
 
 
+def get_number_of_clusters(g):
+
+    cluster = nx.get_node_attributes(g, "clusters")
+
+    max_label = 0
+    for node in g.nodes():
+        if int(cluster[node]) > max_label:
+            max_label = int(cluster[node])
+
+    return max_label + 1
+
+
 def degree_sequence(g, sorted=False):
     deg_seq = []
     for node in g.nodes():
@@ -14,9 +26,10 @@ def degree_sequence(g, sorted=False):
     return deg_seq
 
 
-def cluster(g, num_of_clusters, deep=1):
+def cluster(g, deep=1):
 
     N = g.number_of_nodes()
+    num_of_clusters = get_number_of_clusters(g)
     cluster = nx.get_node_attributes(g, "clusters")
 
     node_cluster_counts = [[0 for _ in range(num_of_clusters)] for _ in range(N)]
@@ -54,9 +67,10 @@ def cluster(g, num_of_clusters, deep=1):
 
 
 
-g = nx.read_gml("../datasets/citeseer.gml")
+g = nx.read_gml("../datasets/dblp.gml")
 
 #d = degree_sequence(g, True)
 #print(d)
-nb_clusters = cluster(g, num_of_clusters=6, deep=4)
+nb_clusters = cluster(g, deep=2)
 print(nb_clusters)
+print(get_number_of_clusters(g))

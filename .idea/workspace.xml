@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d5108fe5-c856-4176-904c-26f36f318195" name="Default" comment="" />
+    <list default="true" id="d5108fe5-c856-4176-904c-26f36f318195" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/analyze/analyze1.py" afterPath="$PROJECT_DIR$/analyze/analyze1.py" />
+      <change beforePath="$PROJECT_DIR$/poisson/poisson_nb.py" afterPath="$PROJECT_DIR$/poisson/poisson_nb.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,12 +17,16 @@
     <SUITE FILE_PATH="coverage/vbgmm2repr$gaussian_comm.coverage" NAME="gaussian_comm Coverage Results" MODIFIED="1521637965240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/comm" />
     <SUITE FILE_PATH="coverage/vbgmm2repr$nb_poiss.coverage" NAME="nb_poiss Coverage Results" MODIFIED="1521642396186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/comm" />
     <SUITE FILE_PATH="coverage/vbgmm2repr$detect.coverage" NAME="detect Coverage Results" MODIFIED="1521650010930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/overlap_comm" />
+    <SUITE FILE_PATH="coverage/vbgmm2repr$poisson_v3.coverage" NAME="poisson_v3 Coverage Results" MODIFIED="1522066363686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/poisson" />
     <SUITE FILE_PATH="coverage/vbgmm2repr$poisson_nb.coverage" NAME="poisson_nb Coverage Results" MODIFIED="1521822474225" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/poisson" />
     <SUITE FILE_PATH="coverage/vbgmm2repr$com_pois.coverage" NAME="com_pois Coverage Results" MODIFIED="1521649759091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/comm" />
     <SUITE FILE_PATH="coverage/vbgmm2repr$gaussian_comm_v3.coverage" NAME="gaussian_comm_v3 Coverage Results" MODIFIED="1521820602724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/comm" />
     <SUITE FILE_PATH="coverage/vbgmm2repr$gaussian_comm_v3_karate.coverage" NAME="gaussian_comm_v3_karate Coverage Results" MODIFIED="1521798235911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/comm" />
+    <SUITE FILE_PATH="coverage/vbgmm2repr$poisson_v4.coverage" NAME="poisson_v4 Coverage Results" MODIFIED="1522066520990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/poisson" />
     <SUITE FILE_PATH="coverage/vbgmm2repr$test1.coverage" NAME="test1 Coverage Results" MODIFIED="1521806717637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/comm" />
+    <SUITE FILE_PATH="coverage/vbgmm2repr$poisson_v2.coverage" NAME="poisson_v2 Coverage Results" MODIFIED="1522066292853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/poisson" />
     <SUITE FILE_PATH="coverage/vbgmm2repr$poisson_test.coverage" NAME="poisson_test Coverage Results" MODIFIED="1521421639488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/comm" />
+    <SUITE FILE_PATH="coverage/vbgmm2repr$mat2gml.coverage" NAME="mat2gml Coverage Results" MODIFIED="1522147130379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/vbgmm2repr$gaussian_comm_v2.coverage" NAME="gaussian_comm_v2 Coverage Results" MODIFIED="1521646981402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/comm" />
     <SUITE FILE_PATH="coverage/vbgmm2repr$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1521074750177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/derivative" />
     <SUITE FILE_PATH="coverage/vbgmm2repr$gaussian_comm_v5.coverage" NAME="gaussian_comm_v5 Coverage Results" MODIFIED="1521720246348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/comm" />
@@ -27,14 +35,15 @@
     <SUITE FILE_PATH="coverage/vbgmm2repr$overlapp_comm.coverage" NAME="overlapp_comm Coverage Results" MODIFIED="1521650122172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/overlap_comm" />
     <SUITE FILE_PATH="coverage/vbgmm2repr$gaussian_comm_v4.coverage" NAME="gaussian_comm_v4 Coverage Results" MODIFIED="1521712033603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/comm" />
     <SUITE FILE_PATH="coverage/vbgmm2repr$gaussian_yeniden.coverage" NAME="gaussian_yeniden Coverage Results" MODIFIED="1521803707568" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/comm" />
+    <SUITE FILE_PATH="coverage/vbgmm2repr$analyze1.coverage" NAME="analyze1 Coverage Results" MODIFIED="1522147322817" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/analyze" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="gaussian_comm_v5.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/comm/gaussian_comm_v5.py">
+      <file leaf-file-name="analyze1.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/analyze/analyze1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="110" column="33" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="133" selection-end-column="28" />
+            <state relative-caret-position="350">
+              <caret line="55" column="27" lean-forward="false" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -42,96 +51,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test1.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/comm/test1.py">
+      <file leaf-file-name="mat2gml.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/mat2gml.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sigmoid.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/walk/sigmoid.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-701">
-              <caret line="37" column="16" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+            <state relative-caret-position="-28">
+              <caret line="4" column="27" lean-forward="false" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#0#21#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="comm.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/comm/comm.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gaussian_comm_v3.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/comm/gaussian_comm_v3.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2086">
-              <caret line="152" column="39" lean-forward="false" selection-start-line="152" selection-start-column="39" selection-end-line="152" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gaussian_yeniden.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/comm/gaussian_yeniden.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="16" column="26" lean-forward="false" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="poisson_nb.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/poisson/poisson_nb.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="98" column="24" lean-forward="true" selection-start-line="98" selection-start-column="24" selection-end-line="98" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="com_pois.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/comm/com_pois.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1413">
-              <caret line="196" column="0" lean-forward="false" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="poisson.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/comm/poisson.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-252">
-              <caret line="20" column="12" lean-forward="false" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nb_poiss.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/comm/nb_poiss.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="117" column="25" lean-forward="false" selection-start-line="117" selection-start-column="25" selection-end-line="117" selection-end-column="25" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -168,6 +95,11 @@
         <option value="$PROJECT_DIR$/walk/sigmoid.py" />
         <option value="$PROJECT_DIR$/comm/gaussian_comm_v3.py" />
         <option value="$PROJECT_DIR$/poisson/poisson_nb.py" />
+        <option value="$PROJECT_DIR$/poisson/poisson_v2.py" />
+        <option value="$PROJECT_DIR$/poisson/poisson_v3.py" />
+        <option value="$PROJECT_DIR$/poisson/poisson_v4.py" />
+        <option value="$PROJECT_DIR$/tools/mat2gml.py" />
+        <option value="$PROJECT_DIR$/analyze/analyze1.py" />
       </list>
     </option>
   </component>
@@ -199,7 +131,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -210,7 +142,7 @@
             <path>
               <item name="vbgmm2repr" type="b2602c69:ProjectViewProjectNode" />
               <item name="vbgmm2repr" type="462c0819:PsiDirectoryNode" />
-              <item name="comm" type="462c0819:PsiDirectoryNode" />
+              <item name="analyze" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vbgmm2repr" type="b2602c69:ProjectViewProjectNode" />
@@ -220,18 +152,13 @@
             <path>
               <item name="vbgmm2repr" type="b2602c69:ProjectViewProjectNode" />
               <item name="vbgmm2repr" type="462c0819:PsiDirectoryNode" />
-              <item name="overlap_comm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vbgmm2repr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vbgmm2repr" type="462c0819:PsiDirectoryNode" />
-              <item name="poisson" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -252,46 +179,46 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.poisson_nb">
-    <configuration name="gaussian_comm_v3" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.analyze1">
+    <configuration name="analyze1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/comm" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/analyze" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="vbgmm2repr" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/comm/gaussian_comm_v3.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analyze/analyze1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="gaussian_yeniden" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="mat2gml" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/comm" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tools" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="vbgmm2repr" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/comm/gaussian_yeniden.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/mat2gml.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="poisson_nb" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="poisson_v2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -304,45 +231,45 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="vbgmm2repr" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/poisson/poisson_nb.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/poisson/poisson_v2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="sigmoid" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="poisson_v3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/walk" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/poisson" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="vbgmm2repr" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/walk/sigmoid.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/poisson/poisson_v3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="test1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="poisson_v4" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/comm" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/poisson" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="vbgmm2repr" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/comm/test1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/poisson/poisson_v4.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -515,19 +442,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.test2" />
-      <item index="1" class="java.lang.String" itemvalue="Python.gaussian_comm_v3" />
-      <item index="2" class="java.lang.String" itemvalue="Python.test1" />
-      <item index="3" class="java.lang.String" itemvalue="Python.sigmoid" />
-      <item index="4" class="java.lang.String" itemvalue="Python.gaussian_yeniden" />
-      <item index="5" class="java.lang.String" itemvalue="Python.poisson_nb" />
+      <item index="1" class="java.lang.String" itemvalue="Python.analyze1" />
+      <item index="2" class="java.lang.String" itemvalue="Python.poisson_v2" />
+      <item index="3" class="java.lang.String" itemvalue="Python.poisson_v3" />
+      <item index="4" class="java.lang.String" itemvalue="Python.poisson_v4" />
+      <item index="5" class="java.lang.String" itemvalue="Python.mat2gml" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.poisson_nb" />
-        <item index="1" class="java.lang.String" itemvalue="Python.gaussian_comm_v3" />
-        <item index="2" class="java.lang.String" itemvalue="Python.sigmoid" />
-        <item index="3" class="java.lang.String" itemvalue="Python.test1" />
-        <item index="4" class="java.lang.String" itemvalue="Python.gaussian_yeniden" />
+        <item index="0" class="java.lang.String" itemvalue="Python.analyze1" />
+        <item index="1" class="java.lang.String" itemvalue="Python.mat2gml" />
+        <item index="2" class="java.lang.String" itemvalue="Python.poisson_v4" />
+        <item index="3" class="java.lang.String" itemvalue="Python.poisson_v3" />
+        <item index="4" class="java.lang.String" itemvalue="Python.poisson_v2" />
       </list>
     </recent_temporary>
   </component>
@@ -554,12 +481,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29198682" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29198682" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" x="180" y="82" width="1053" height="830" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" x="179" y="68" width="1055" height="845" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -611,90 +538,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/comm/gaussian_comm_v3_karate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2114">
-          <caret line="154" column="30" lean-forward="false" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comm/gaussian_comm_v3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1554">
-          <caret line="114" column="39" lean-forward="true" selection-start-line="114" selection-start-column="39" selection-end-line="114" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comm/gaussian_comm_v2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1736">
-          <caret line="127" column="35" lean-forward="false" selection-start-line="127" selection-start-column="35" selection-end-line="127" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comm/com_pois.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2716">
-          <caret line="196" column="0" lean-forward="false" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comm/comm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2072">
-          <caret line="150" column="25" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="189" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comm/nb_poiss.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1400">
-          <caret line="103" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="152" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overlap_comm/detect_comm_poisson.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1974">
-          <caret line="144" column="0" lean-forward="false" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/overlap_comm/overlapp_comm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2618">
-          <caret line="189" column="10" lean-forward="false" selection-start-line="189" selection-start-column="10" selection-end-line="189" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comm/test1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comm/poisson.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="20" column="12" lean-forward="false" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comm/nb_poiss_v2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/comm/gaussian_comm_v3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1834">
@@ -721,7 +564,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="42" column="25" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -750,7 +592,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="588">
           <caret line="42" column="25" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -779,7 +620,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="42" column="25" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -885,7 +725,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="658">
           <caret line="129" column="59" lean-forward="false" selection-start-line="129" selection-start-column="59" selection-end-line="129" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -893,19 +732,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
           <caret line="130" column="12" lean-forward="false" selection-start-line="130" selection-start-column="12" selection-end-line="130" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#18#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/comm/gaussian_comm_v5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
+        <state relative-caret-position="1498">
           <caret line="110" column="33" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="133" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -913,23 +746,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
           <caret line="55" column="19" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="155" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/comm/poisson.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
+        <state relative-caret-position="252">
           <caret line="20" column="12" lean-forward="false" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/comm/com_pois.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1413">
+        <state relative-caret-position="2716">
           <caret line="196" column="0" lean-forward="false" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -937,23 +767,88 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/comm/comm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
+        <state relative-caret-position="2044">
           <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/comm/nb_poiss.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
+        <state relative-caret-position="1596">
           <caret line="117" column="25" lean-forward="false" selection-start-line="117" selection-start-column="25" selection-end-line="117" selection-end-column="25" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/envs/all/lib/python2.7/site-packages/scipy/sparse/compressed.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="213" column="0" lean-forward="false" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poisson/poisson_v3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2436">
+          <caret line="178" column="43" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="194" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poisson/poisson_v4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="157" column="16" lean-forward="false" selection-start-line="157" selection-start-column="16" selection-end-line="157" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poisson/poisson_v2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="143" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="175" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comm/gaussian_yeni_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comm/gaussian_yeni_v0.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/poisson/poisson_nb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="839">
+          <caret line="99" column="24" lean-forward="false" selection-start-line="99" selection-start-column="24" selection-end-line="99" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+            <marker date="1522065363626" expanded="true" signature="3211:3235" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -965,36 +860,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda2/envs/all/lib/python2.7/site-packages/scipy/sparse/compressed.py">
+    <entry file="file://$PROJECT_DIR$/comm/gaussian_comm_v3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="213" column="0" lean-forward="false" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
+        <state relative-caret-position="839">
+          <caret line="152" column="39" lean-forward="false" selection-start-line="152" selection-start-column="39" selection-end-line="152" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/walk/sigmoid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-701">
+        <state relative-caret-position="0">
           <caret line="37" column="16" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/comm/gaussian_comm_v3.py">
+    <entry file="file://$USER_HOME$/anaconda2/envs/all/lib/python2.7/site-packages/scipy/io/matlab/mio.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2086">
-          <caret line="152" column="39" lean-forward="false" selection-start-line="152" selection-start-column="39" selection-end-line="152" selection-end-column="39" />
+        <state relative-caret-position="207">
+          <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/poisson/poisson_nb.py">
+    <entry file="file://$PROJECT_DIR$/datasets/citeseer.gml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="98" column="24" lean-forward="true" selection-start-line="98" selection-start-column="24" selection-end-line="98" selection-end-column="24" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/blogcatalog.gml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasets/dblp.gml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/mat2gml.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
+          <caret line="4" column="27" lean-forward="false" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analyze/analyze1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="55" column="27" lean-forward="false" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
