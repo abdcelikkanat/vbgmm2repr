@@ -77,12 +77,19 @@ def find_eig(g, sample_size=10000):
                             counts[node].update(
                                 {nb_nb_nb: float(1.0 / ((float(node_degree) * float(nb_degree) * float(nb_nb_degree))) * float(sample_size))})
                             nb_nb_nb_degree = nx.degree(g, nb_nb_nb)
+                            """
                             for nb_nb_nb_nb in nx.neighbors(g, nb_nb_nb):
                                 if nb_nb_nb_nb not in counts[node] and nb_nb_nb_nb != node:
                                     counts[node].update(
                                         {nb_nb_nb_nb: float(1.0 / (
                                         (float(node_degree) * float(nb_degree) * float(nb_nb_degree) * float(nb_nb_nb_degree))) * float(
                                             sample_size))})
+                            """
+                        if nb_nb_nb in counts[node]:
+                            counts[node][nb_nb_nb] += float(1.0 / ((float(node_degree) * float(nb_degree) * float(nb_nb_degree))) * float(sample_size))
+
+                if nb_nb in counts[node]:
+                    counts[node][nb_nb] += float((1.0 / (float(node_degree) * float(nb_degree))) * float(sample_size))
 
     return counts
 
@@ -139,8 +146,8 @@ def run(g, dim, num_of_iters, eta):
 
     counts = find_eig(g, sample_size=10000)
     nb_list = get_nb_list2(counts)
-    print(nb_list[1])
-    print(counts[str(1)])
+    #print(nb_list[1])
+    #print(counts[str(1)])
     print("Iteration has just started")
     for iter in range(num_of_iters):
         #if iter % 10 == 0:
@@ -161,8 +168,11 @@ def run(g, dim, num_of_iters, eta):
 
 #g = nx.Graph()
 #g.add_edges_from(ex_graph_0)
-g = nx.read_gml("../datasets/karate.gml")
+g = nx.read_gml("../datasets/citeseer.gml")
 
 
-B, T = run(g, dim=2, num_of_iters=1000, eta=0.0001)
-draw_points(B, T, name="Karate", g=g)
+B, T = run(g, dim=128, num_of_iters=1000, eta=0.00001)
+np.save("./karate_T", T)
+np.save("./karate_B", B)
+
+#draw_points(B, T, name="Karate", g=g)
