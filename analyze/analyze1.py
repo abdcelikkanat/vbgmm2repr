@@ -67,10 +67,10 @@ def cluster(g, deep=1):
 
 
 
-g = nx.read_gml("../datasets/dblp.gml")
+g = nx.read_gml("../datasets/blogcatalog.gml")
 
 #d = degree_sequence(g, True)
 #print(d)
-nb_clusters = cluster(g, deep=2)
+nb_clusters = cluster(g, deep=3)
 print(nb_clusters)
 print(get_number_of_clusters(g))
