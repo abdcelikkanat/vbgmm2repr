@@ -26,7 +26,7 @@ def generate(num_of_samples=1000, dim=2, num_of_classes=2):
     return x
 
 def variationalBayes(x):
-
+    pass
 
 def main():
 
