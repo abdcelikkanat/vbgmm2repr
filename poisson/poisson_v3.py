@@ -181,6 +181,8 @@ def run(g, dim, num_of_iters, eta):
         score = compute_score(g, F, nb_list, common_nb)
         print("Iter: {} Score {}".format(iter, score))
 
+        if iter % 50 == 0:
+            np.save("../comm/numpy_files/citeseer_poisson_v3_iter_{}".format(iter), F)
     return F
 
 
@@ -191,6 +193,6 @@ edges = example1
 g = nx.read_gml("../datasets/citeseer.gml")
 
 
-F = run(g, dim=128, num_of_iters=500, eta=0.001)
-np.save("../comm/numpy_files/citeseer_poisson_v3", F)
+F = run(g, dim=128, num_of_iters=300, eta=0.005)
+np.save("../comm/numpy_files/citeseer_poisson_v3_son", F)
 #draw_points(F, "Karate", g)
