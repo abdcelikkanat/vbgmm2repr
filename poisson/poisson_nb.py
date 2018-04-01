@@ -89,15 +89,16 @@ def grad(g, F, nb_list, common_nb, node):
 
     grad_sum = 0.0
     for v in range(N):
-        for u in range(v+1, N):
-            Nvu = float(common_nb[v, u])
-            if v == node:
-                grad_sum += -F[u, :]
-                if Nvu != 0:
+        for u in range(N):
+	   if u != v:
+              Nvu = float(common_nb[v, u])
+              if v == node:
+                 grad_sum += -F[u, :]
+                 if Nvu != 0:
                     grad_sum += Nvu * (F[u, :] / np.dot(F[v, :], F[u, :]))
-            if u == node:
-                grad_sum += -F[v, :]
-                if Nvu != 0:
+              if u == node:
+                 grad_sum += -F[v, :]
+                 if Nvu != 0:
                     grad_sum += Nvu * (F[v, :] / np.dot(F[v, :], F[u, :]) )
 
     return grad_sum
@@ -107,16 +108,16 @@ def compute_score(g, F, nb_list, common_nb):
 
     N = g.number_of_nodes()
 
-
     score = 0.0
     for v in range(N):
-        for u in range(v+1, N):
-            Nvu = common_nb[v, u]
-            dot = np.dot(F[v, :], F[u, :])
-            score += -dot
-            if Nvu != 0:
-                score += float(Nvu)*np.log(dot + 1)
-                score += -np.sum([np.log(val) for val in range(2, Nvu+1)])
+        for u in range(N):
+	    if u != v:
+               Nvu = common_nb[v, u]
+               dot = np.dot(F[v, :], F[u, :])
+               score += -dot
+               if Nvu != 0:
+                  score += float(Nvu)*np.log(dot + 1)
+               score += -np.sum([np.log(val) for val in range(2, Nvu+1)])
 
     return score
 

@@ -187,6 +187,7 @@ def run(g, dim, num_of_iters, eta):
 edges = example1
 #g = nx.Graph()
 #g.add_edges_from(edges)
+
 g = nx.read_gml("../datasets/citeseer.gml")
 
 
