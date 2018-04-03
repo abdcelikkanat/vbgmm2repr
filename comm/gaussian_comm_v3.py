@@ -113,7 +113,8 @@ def run(g, dim, num_of_iters, eta):
     # Initialize parameters
     B = np.random.normal(size=(N, dim))
     T = np.random.normal(size=(N, dim))
-
+    T = np.load("./numpy_files/citeseer_gaussian_v3_son.npy")
+    B = T
     nb_list = find_neighbors(g)
 
     #dist = find_distances(g)
@@ -139,6 +140,8 @@ def run(g, dim, num_of_iters, eta):
         score = compute_score(g, B, T, nb_list, dist)
         print("Iter: {} Score {}".format(iter, score))
 
+        if iter % 50 == 0:
+            np.save("./numpy_files/citeseer_gaussian_v3_iter_{}".format(iter), T)
     #draw_points(B, T, "Karate", g, base=False)
 
     return B, T
@@ -151,6 +154,6 @@ g = nx.read_gml("../datasets/citeseer.gml")
 
 
 B, T = run(g, dim=128, num_of_iters=300, eta=0.001)
-np.save("./numpy_files/citeseer_gaussian_v3", T)
+np.save("./numpy_files/citeseer_gaussian_v3_son2", T)
 #draw_points(B, T, "Karate", g)
 
