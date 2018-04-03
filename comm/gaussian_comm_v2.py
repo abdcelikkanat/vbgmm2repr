@@ -140,6 +140,6 @@ edges = example1
 #g.add_edges_from(edges)
 g = nx.read_gml("../datasets/citeseer.gml")
 
-B, T = run(g, dim=128, num_of_iters=5000, eta=0.0001)
+B, T = run(g, dim=128, num_of_iters=500, eta=0.001)
 np.save("./numpy_files/citeseer_gaussian_final", T)
 #draw_points(B, T, "Karate", g)
