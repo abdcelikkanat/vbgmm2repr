@@ -34,11 +34,11 @@ def compute_lambda(g, T, B, nb_list):
     N = nx.number_of_nodes(g)
     K = B.shape[0]
 
-    lambda_matrix = {str(v): {str(u): 0.0 for u in nb_list[v]} for v in range(N)}
+    lambda_matrix = {str(v): {str(u): 0.0 for u in range(N)} for v in range(N)}
 
     for v in range(N):
-        for u in nb_list[v]:
-            if lambda_matrix[str(v)][str(u)] == 0.0:
+        for u in range(N):
+            if lambda_matrix[str(v)][str(u)] == 0.0 and u != v:
                 sum_list = [np.dot(T[v, :]-B[k, :], T[v, :]-B[k, :])+np.dot(T[u, :]-B[k, :], T[u, :]-B[k, :]) for k in range(K)]
 
                 lambda_matrix[str(v)][str(u)] = np.sum(sum_list)/2.0
@@ -164,10 +164,10 @@ def run(g, dim, num_of_iters, eta, num_of_classes):
             node_grad_T = np.zeros(shape=N, dtype=np.float)
             for node in range(N):
                 node_grad_T[node] = grad_T(g, B, T, nb_list, lambda_matrix, node)
-
-            B[k, :] += eta * node_grad_k
-            for node in range(N):
                 T[node, :] += eta * node_grad_T[node]
+            B[k, :] += eta * node_grad_k
+            #for node in range(N):
+            #    T[node, :] += eta * node_grad_T[node]
 
             score = compute_score(g, nb_list, lambda_matrix)
             print("Iter: {} Score {}".format(iter, score))
@@ -185,7 +185,7 @@ def run(g, dim, num_of_iters, eta, num_of_classes):
 g = nx.read_gml("../datasets/karate.gml")
 
 
-B, T = run(g, dim=2, num_of_iters=300, eta=0.001 ,num_of_classes=2)
+B, T = run(g, dim=2, num_of_iters=300, eta=0.0001 ,num_of_classes=2)
 #np.save("./numpy_files/citeseer_poisson_gaussian_iter_son", T)
 draw_points(B, T, "Karate", g)
 
