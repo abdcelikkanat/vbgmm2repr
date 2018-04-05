@@ -14,7 +14,8 @@ Result:
 Karate dataset i icin nb2, nb1 ve nb2_v2 kullandigimda guzel goruntuler cikiyor ama diger durumlarda pek iyi degil gibi
 
 Citeseer icin adam gibi converge etmeyen 50. iter de 31.0 basari orani elede edildi.
-
+Citeseer icin 300. iterde yuzde 40 a cikti.
+Citeseer icin 750. iterde yuzde 46 a cikti (0.465-0.458-0.455-0454-0.449)
 """
 
 

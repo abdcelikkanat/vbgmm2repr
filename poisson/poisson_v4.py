@@ -13,7 +13,12 @@ example2 = [[str(edge[0]), str(edge[1])] for edge in example2]
 
 example3 = [[0, 1], [0, 2], [0, 3], [0, 4], [5, 6], [5, 7], [5, 8], [5, 9], [0, 5]]
 example3 = [[str(edge[0]), str(edge[1])] for edge in example3]
+"""
+Results:
+    citeseer: number of iters:500, eta:0001
+    0.310 0.316 0.325 0.329 0.33 0.33
 
+"""
 
 def find_neighbors(g):
     N = g.number_of_nodes()

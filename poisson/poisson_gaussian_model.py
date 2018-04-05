@@ -30,21 +30,7 @@ Therefore,
 
 
 
-def compute_lambda(g, T, B, nb_list):
-    N = nx.number_of_nodes(g)
-    K = B.shape[0]
 
-    lambda_matrix = {str(v): {str(u): 0.0 for u in range(N)} for v in range(N)}
-
-    for v in range(N):
-        for u in range(N):
-            if lambda_matrix[str(v)][str(u)] == 0.0 and u != v:
-                sum_list = [np.dot(T[v, :]-B[k, :], T[v, :]-B[k, :])+np.dot(T[u, :]-B[k, :], T[u, :]-B[k, :]) for k in range(K)]
-
-                lambda_matrix[str(v)][str(u)] = np.sum(sum_list)/2.0
-                lambda_matrix[str(u)][str(v)] = lambda_matrix[str(v)][str(u)]
-
-    return lambda_matrix
 
 def find_neighbors(g):
     N = g.number_of_nodes()
@@ -62,8 +48,30 @@ def find_neighbors(g):
 
     return nb_list
 
-def compute_lambda_term(g, T, B, nb_list):
-    return 0
+
+
+
+def grad_lambda_node(T, B, node, u):
+    K = B.shape[0]
+
+    grad_sum = 0.0
+    for k in range(K):
+        diff_node = T[node, :]-B[k, :]
+        diff_u = T[u, :]-B[k, :]
+        term1 = np.exp(-(np.dot(diff_node, diff_node) + np.dot(diff_u, diff_u))/2.0)
+        term2 = -(diff_node )
+        grad_sum += term1*term2
+
+    return grad_sum
+
+def grad_lambda_k(T, B, v, u, k):
+    diff_v = T[v, :] - B[k, :]
+    diff_u = T[u, :] - B[k, :]
+    term1 = np.exp(-(np.dot(diff_v, diff_v) + np.dot(diff_u, diff_u))/2.0)
+    term2 = diff_v + diff_u
+
+    return term1*term2
+
 
 def grad_T(g, B, T, nb_list, lambda_matrix, node):
     N = g.number_of_nodes()
@@ -73,11 +81,11 @@ def grad_T(g, B, T, nb_list, lambda_matrix, node):
 
     grad_sum = 0.0
     for u in range(N):
-        sum_k = np.sum([T[node, :] - B[k, :] for k in range(K)])
+        grad_lambda = grad_lambda_node(T, B, node, u)
         if u in nb_list[node]:
-            grad_sum += ( 1.0 / (np.exp(lambda_matrix[str(node)][str(u)]) - 1.0) ) * sum_k
+            grad_sum += ( 1.0 / (np.exp(lambda_matrix[str(node)][str(u)]) - 1.0) ) * grad_lambda
         else:
-            grad_sum += -sum_k
+            grad_sum += -grad_lambda
 
     return grad_sum
 
@@ -89,13 +97,34 @@ def grad_B(g, B, T, nb_list, lambda_matrix, node_k):
     grad_sum = 0.0
     for v in range(N):
         for u in range(N):
-            sum_k = ( T[v, :] + T[u, :] - 2.0*B[node_k, :] )
+            grad_k = grad_lambda_k(T, B, v, u, node_k)
             if u in nb_list[v]:
-                grad_sum += (1.0 / (np.exp(lambda_matrix[str(v)][str(u)]) - 1.0)) * sum_k
+                grad_sum += (1.0 / (np.exp(lambda_matrix[str(v)][str(u)]) - 1.0)) * grad_k
             else:
-                grad_sum += sum_k
+                grad_sum += -grad_k
 
     return grad_sum
+
+def compute_lambda(g, T, B, nb_list):
+    N = nx.number_of_nodes(g)
+    K = B.shape[0]
+
+    lambda_matrix = {str(v): {str(u): 0.0 for u in range(N)} for v in range(N)}
+
+    for v in range(N):
+        for u in range(N):
+            if lambda_matrix[str(v)][str(u)] == 0.0 and u != v:
+
+                sum_k = 0.0
+                for k in range(K):
+                    diff_v = T[v, :] - B[k, :]
+                    diff_u = T[u, :] - B[k, :]
+                    sum_k += np.exp(-(np.dot(diff_v, diff_v)+np.dot(diff_u, diff_u))/2.0)
+
+                lambda_matrix[str(v)][str(u)] = sum_k
+                lambda_matrix[str(u)][str(v)] = sum_k
+
+    return lambda_matrix
 
 def compute_score(g, nb_list, lambda_matrix):
 
@@ -127,20 +156,15 @@ def draw_points(B, T, name="", g=None, base=False):
         for inx in range(g.number_of_nodes()):
             if groundTruth[inx] == 0:
                 plt.plot(T[inx, 0], T[inx, 1], 'r.')
-                if base is True:
-                    plt.plot(B[inx, 0], B[inx, 1], 'rx')
+
             if groundTruth[inx] == 1:
                 plt.plot(T[inx, 0], T[inx, 1], 'b.')
-                if base is True:
-                    plt.plot(B[inx, 0], B[inx, 1], 'bx')
-        plt.show()
 
-    else:
-        plt.figure()
-        plt.plot(T[:4, 0], T[:4, 1], 'b.')
-        plt.plot(T[4:, 0], T[4:, 1], 'r.')
-        plt.show()
 
+        if base is True:
+            plt.plot(B[:, 0], B[:, 1], 'gx')
+
+        plt.show()
 
 def run(g, dim, num_of_iters, eta, num_of_classes):
     N = nx.number_of_nodes(g)
@@ -159,18 +183,24 @@ def run(g, dim, num_of_iters, eta, num_of_classes):
         #    draw_points(B, T, "Karate", g, base=True)
         for k in range(num_of_classes):
             lambda_matrix = compute_lambda(g, T, B, nb_list)
+
             node_grad_k = grad_B(g, B, T, nb_list, lambda_matrix, node_k=k)
-
-            node_grad_T = np.zeros(shape=N, dtype=np.float)
-            for node in range(N):
-                node_grad_T[node] = grad_T(g, B, T, nb_list, lambda_matrix, node)
-                T[node, :] += eta * node_grad_T[node]
             B[k, :] += eta * node_grad_k
-            #for node in range(N):
-            #    T[node, :] += eta * node_grad_T[node]
 
-            score = compute_score(g, nb_list, lambda_matrix)
-            print("Iter: {} Score {}".format(iter, score))
+        node_grad_T = np.zeros(shape=(N, dim), dtype=np.float)
+        for node in range(N):
+            lambda_matrix = compute_lambda(g, T, B, nb_list)
+
+            node_grad_T[node, :] = grad_T(g, B, T, nb_list, lambda_matrix, node)
+            T[node, :] += eta * node_grad_T[node, :]
+
+
+
+        #for node in range(N):
+        #    T[node, :] += eta * node_grad_T[node]
+        lambda_matrix = compute_lambda(g, T, B, nb_list)
+        score = compute_score(g, nb_list, lambda_matrix)
+        print("Iter: {} Score {}".format(iter, score))
 
         #if iter % 50 == 0:
         #    np.save("./numpy_files/citeseer_poisson_gaussian_iter_{}".format(iter), T)
@@ -185,7 +215,7 @@ def run(g, dim, num_of_iters, eta, num_of_classes):
 g = nx.read_gml("../datasets/karate.gml")
 
 
-B, T = run(g, dim=2, num_of_iters=300, eta=0.0001 ,num_of_classes=2)
+B, T = run(g, dim=2, num_of_iters=1000, eta=0.001 ,num_of_classes=2)
 #np.save("./numpy_files/citeseer_poisson_gaussian_iter_son", T)
-draw_points(B, T, "Karate", g)
+draw_points(B, T, "Karate", g, base=True)
 

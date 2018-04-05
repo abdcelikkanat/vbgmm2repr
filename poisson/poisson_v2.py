@@ -4,6 +4,12 @@ import matplotlib.pyplot as plt
 from scipy.sparse import *
 import random
 
+"""
+Result: 
+Citeseer: iter count: 300, eta = 0.0005
+         0.3753 0.3849 0.3945 0.4010 0.4035 0.4086
+
+"""
 
 example1 = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3], [4, 5], [4,6], [4,7], [5,6], [5,7], [6,7], [3,4]]
 example1 = [[str(edge[0]), str(edge[1])] for edge in example1]
@@ -172,6 +178,6 @@ edges = example1
 g = nx.read_gml("../datasets/citeseer.gml")
 
 
-F = run(g, dim=128, num_of_iters=500, eta=0.001)
-np.save("../comm/numpy_files/citeseer_poisson_v2", F)
+F = run(g, dim=128, num_of_iters=300, eta=0.0005)
+np.save("../comm/numpy_files/citeseer_poisson_v2_son", F)
 #draw_points(F, "Karate", g)

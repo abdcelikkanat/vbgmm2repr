@@ -22,6 +22,8 @@ p_{ij} = N(T(j); B(i), I)
 
 Results:
 Karate network u icin 1 nb de ayrim fena sayilmaz ama 2 nb ve ustunde her grup tek bir noktadaa toplasiyor.
+Citeseer, 150. iter icin yaklasik yuzde 22 lerde
+
 """
 
 def find_distances(graph):
@@ -154,13 +156,15 @@ def run(g, dim, num_of_iters, eta):
     # Initialize parameters
     B = np.random.normal(size=(N, dim))
     T = np.random.normal(size=(N, dim))
+    B = np.load("./numpy_files/citeseer_poisson_gaussian_iter_150_B.npy")
+    T = np.load("./numpy_files/citeseer_poisson_gaussian_iter_150_T.npy")
 
     nb_list = find_neighbors(g)
 
     #dist = find_distances(g)
     dist = []
 
-    for iter in range(num_of_iters):
+    for iter in range(151, num_of_iters):
         #if iter % 10 == 0:
         #    draw_points(B, T, "Karate", g, base=True)
         for node in range(N):
@@ -178,8 +182,8 @@ def run(g, dim, num_of_iters, eta):
         print("Iter: {} Score {}".format(iter, score))
 
         if iter % 50 == 0:
-            np.save("./numpy_files/citeseer_poisson_gaussian_iter_{}_T".format(iter), T)
-            np.save("./numpy_files/citeseer_poisson_gaussian_iter_{}_B".format(iter), B)
+            np.save("./numpy_files/citeseer_gaussian_iter_{}_T".format(iter), T)
+            np.save("./numpy_files/citeseer_gaussian_iter_{}_B".format(iter), B)
     #draw_points(B, T, "Karate", g, base=False)
 
     return B, T
@@ -191,8 +195,8 @@ def run(g, dim, num_of_iters, eta):
 g = nx.read_gml("../datasets/citeseer.gml")
 
 
-B, T = run(g, dim=128, num_of_iters=10, eta=0.001)
-np.save("./numpy_files/citeseer_poisson_gaussian_son_T", T)
-np.save("./numpy_files/citeseer_poisson_gaussian_son_B", B)
+B, T = run(g, dim=128, num_of_iters=1500, eta=0.001)
+np.save("./numpy_files/citeseer_gaussian_son_T", T)
+np.save("./numpy_files/citeseer_gaussian_son_B", B)
 #draw_points(B, T, "Karate", g)
 
