@@ -3,7 +3,7 @@ import networkx as nx
 
 
 F = np.load("./numpy_files/citeseer_poisson_v2_son.npy")
-#F = np.load("../poisson/numpy_files/citeseer_poisson_gaussian_iter_50_T.npy")
+#F = np.load("../poisson/numpy_files/citeseer_gaussian_iter_250_T.npy")
 
 g = nx.read_gml("../datasets/citeseer.gml")
 

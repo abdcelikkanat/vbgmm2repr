@@ -222,7 +222,7 @@ def run(nx_graph, dim, num_of_iters, eta):
     B = np.random.normal(size=(N, dim))
     T = np.random.normal(size=(N, dim))
 
-    nb_list = find_neighbors4(g)
+    nb_list = find_neighbors(g)
 
     #dist = find_distances(g)
     dist = []
@@ -245,9 +245,9 @@ def run(nx_graph, dim, num_of_iters, eta):
         score = compute_score(g, B, T, nb_list, dist)
         print("Iter: {} Score {}".format(iter, score))
 
-        if iter % 50 == 0:
-            np.save("./numpy_files/citeseer_sigmoid_nb2_iter_{}_T".format(iter), T)
-            np.save("./numpy_files/citeseer_sigmoid_nb2_iter_{}_B".format(iter), B)
+        #if iter % 50 == 0:
+        #    np.save("./numpy_files/citeseer_sigmoid_nb2_iter_{}_T".format(iter), T)
+        #    np.save("./numpy_files/citeseer_sigmoid_nb2_iter_{}_B".format(iter), B)
     #draw_points(B, T, "Karate", g, base=False)
 
     return B, T
@@ -259,8 +259,8 @@ def run(nx_graph, dim, num_of_iters, eta):
 g = nx.read_gml("../datasets/citeseer.gml")
 
 
-B, T = run(g, dim=128, num_of_iters=1500, eta=0.01)
-np.save("./numpy_files/citeseer_sigmoid_nb2_son", T)
-np.save("./numpy_files/citeseer_sigmoid_nb2_son", B)
+B, T = run(g, dim=128, num_of_iters=300, eta=0.001)
+#np.save("./numpy_files/citeseer_sigmoid_nb2_son", T)
+#np.save("./numpy_files/citeseer_sigmoid_nb2_son", B)
 #draw_points(B, T, "Karate", g, base=False)
 
