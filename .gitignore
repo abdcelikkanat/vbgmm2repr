@@ -102,7 +102,7 @@ ENV/
 
 *.npy
 .idea/
-
+/.idea/
 .idea/.*
 
 

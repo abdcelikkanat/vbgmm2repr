@@ -11,19 +11,25 @@ from multiprocessing import Pool, Value, Array
 import networkx as nx
 from scipy.sparse import *
 
-graph = nx.read_gml("./citeseer.gml")
-N = graph.number_of_nodes()
-print(N)
-nbnb = lil_matrix(np.zeros(shape=(N, N), dtype=np.int), dtype=np.int)
-for v1 in graph.nodes():
-    for v2 in nx.neighbors(graph, v1):
-        for v3 in nx.neighbors(graph, v2):
-            if nbnb[int(v1), int(v3)] == 0:
-                v_nb = set(list(nx.neighbors(graph, v1)))
-                w_nb = set(list(nx.neighbors(graph, v3)))
-                intersect = v_nb.intersection(w_nb)
-                nbnb[int(v1), int(v3)] = len(intersect)
 
+def generate_nn_matrix(vocab):
+    graph = nx.read_gml("./citeseer.gml")
+
+    N = len(vocab)
+
+    nbnb = lil_matrix(np.zeros(shape=(N, N), dtype=np.int), dtype=np.int)
+    for v1 in graph.nodes():
+            for v2 in nx.neighbors(graph, v1):
+                for v3 in nx.neighbors(graph, v2):
+                    if nbnb[vocab.indices([v1])[0], vocab.indices([v3])[0]] == 0:
+                        v_nb = set(list(nx.neighbors(graph, v1)))
+                        w_nb = set(list(nx.neighbors(graph, v3)))
+                        intersect = v_nb.intersection(w_nb)
+                        nbnb[vocab.indices([v1])[0], vocab.indices([v3])[0]] = len(intersect)
+
+
+
+    return nbnb
 
 
 class VocabItem:
@@ -189,7 +195,7 @@ class UnigramTable:
         norm = sum([math.pow(t.count, power) for t in vocab]) # Normalizing constant
 
         #table_size = 1e8 # Length of the unigram table
-	table_size = np.uint32(1e8) # Length of the unigram table
+        table_size = np.uint32(1e8) # Length of the unigram table
         table = np.zeros(table_size, dtype=np.uint32)
 
         print 'Filling unigram table'
@@ -341,26 +347,28 @@ def train_process(pid):
                     # Update syn0
                     syn0[context_word] += neu1e
                 """
+
+                """ """
+                nbnb = generate_nn_matrix(vocab)
                 for context_word in context:
-                    if context_word != '<bol>' and context_word != '<eol>' and context_word != '<unk>':
-                        if target != '<bol>' and target != '<eol>' and target != '<unk>':
-                            # Init neule with zeros
-                            neu1e = np.zeros(dim)
+                    # Init neule with zeros
+                    neu1e = np.zeros(dim)
 
-                            # Compute neu1e and update syn1
-                            if neg > 0:
-                                classifiers = [(token, 1)] + [(target, 0) for target in table.sample(neg)]
-                            else:
-                                classifiers = zip(vocab[token].path, vocab[token].code)
-                            for target, label in classifiers:
-                                prod = np.dot(syn0[context_word], syn1[target])
-                                g = 1.0 - (float(nbnb[int(context_word), int(target)])/prod)
-                                g = alpha * g
-                                neu1e += g * syn1[target]
-                                syn1[target] += g*syn0[context_word]
+                    # Compute neu1e and update syn1
+                    if neg > 0:
+                        classifiers = [(token, 1)] + [(target, 0) for target in table.sample(neg)]
+                    else:
+                        classifiers = zip(vocab[token].path, vocab[token].code)
+                    for target, label in classifiers:
+                            #print(vocab.indices([context_word]))
+                            prod = np.dot(syn0[context_word], syn1[target]) + 1e-6
+                            g = 1.0 - (float(nbnb[vocab.indices([context_word])[0], vocab.indices([target])[0]])/prod)
+                            g = alpha * g
+                            neu1e += g * syn1[target]
+                            syn1[target] += g*syn0[context_word]
 
-                            # Update syn0
-                            syn0[context_word] += neu1e
+                    # Update syn0
+                    syn0[context_word] += neu1e
 
             word_count += 1
 
@@ -405,12 +413,15 @@ def __init_process(*args):
         syn0 = np.ctypeslib.as_array(syn0_tmp)
         syn1 = np.ctypeslib.as_array(syn1_tmp)
 
+
 def train(fi, fo, cbow, neg, dim, alpha, win, min_count, num_processes, binary):
     # Read train file to init vocab
     vocab = Vocab(fi, min_count)
 
     # Init net
     syn0, syn1 = init_net(dim, len(vocab))
+
+    nbnb = generate_nn_matrix(vocab)
 
     global_word_count = Value('i', 0)
     table = None
@@ -434,6 +445,7 @@ def train(fi, fo, cbow, neg, dim, alpha, win, min_count, num_processes, binary):
     # Save model to file
     save(vocab, syn0, fo, binary)
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-train', help='Training file', dest='fi', required=True)
@@ -446,7 +458,7 @@ if __name__ == '__main__':
     parser.add_argument('-min-count', help='Min count for words used to learn <unk>', dest='min_count', default=5, type=int)
     parser.add_argument('-processes', help='Number of processes', dest='num_processes', default=1, type=int)
     parser.add_argument('-binary', help='1 for output model in binary format, 0 otherwise', dest='binary', default=0, type=int)
-    #TO DO: parser.add_argument('-epoch', help='Number of training epochs', dest='epoch', default=1, type=int)
+    # TO DO: parser.add_argument('-epoch', help='Number of training epochs', dest='epoch', default=1, type=int)
     args = parser.parse_args()
 
     train(args.fi, args.fo, bool(args.cbow), args.neg, args.dim, args.alpha, args.win,
