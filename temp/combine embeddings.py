@@ -1,7 +1,7 @@
 import numpy
 
 file_path1 = "../comm/citeseer_test_again_word.embedding"
-file_path2 = "../comm/citeseer_poisson_v3_nb6_iter_50.embedding"
+file_path2 = "../comm/citeseer_poisson_model1_iter_750.embedding"
 output_file = "../comm/combined.embedding"
 
 embedding1 = {}
