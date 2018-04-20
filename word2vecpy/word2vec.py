@@ -82,9 +82,9 @@ class Vocab:
         self.__sort(min_count)
 
         #assert self.word_count == sum([t.count for t in self.vocab_items]), 'word_count and sum of t.count do not agree'
-        print 'Total words in training file: %d' % self.word_count
-        print 'Total bytes in training file: %d' % self.bytes
-        print 'Vocab size: %d' % len(self)
+        print('Total words in training file: %d' % self.word_count)
+        print('Total bytes in training file: %d' % self.bytes)
+        print('Vocab size: %d' % len(self))
 
     def __getitem__(self, i):
         return self.vocab_items[i]
@@ -121,8 +121,7 @@ class Vocab:
         self.vocab_items = tmp
         self.vocab_hash = vocab_hash
 
-        print
-        print 'Unknown vocab size:', count_unk
+        print('Unknown vocab size:', count_unk)
 
     def indices(self, tokens):
         return [self.vocab_hash[token] if token in self else self.vocab_hash['<unk>'] for token in tokens]
@@ -198,7 +197,7 @@ class UnigramTable:
         table_size = np.uint32(1e8) # Length of the unigram table
         table = np.zeros(table_size, dtype=np.uint32)
 
-        print 'Filling unigram table'
+        print('Filling unigram table')
         p = 0 # Cumulative probability
         i = 0
         for j, unigram in enumerate(vocab):
@@ -360,12 +359,12 @@ def train_process(pid):
                     else:
                         classifiers = zip(vocab[token].path, vocab[token].code)
                     for target, label in classifiers:
-                            #print(vocab.indices([context_word]))
-                            prod = np.dot(syn0[context_word], syn1[target]) + 1e-6
-                            g = 1.0 - (float(nbnb[vocab.indices([context_word])[0], vocab.indices([target])[0]])/prod)
-                            g = alpha * g
-                            neu1e += g * syn1[target]
-                            syn1[target] += g*syn0[context_word]
+                        #print(vocab.indices([context_word]))
+                        prod = np.dot(syn0[context_word], syn1[target]) + 1e-6
+                        g = 1.0 - (float(nbnb[vocab.indices([context_word])[0], vocab.indices([target])[0]])/prod)
+                        g = alpha * g
+                        neu1e += g * syn1[target]
+                        syn1[target] += g*syn0[context_word]
 
                     # Update syn0
                     syn0[context_word] += neu1e
@@ -381,7 +380,7 @@ def train_process(pid):
     fi.close()
 
 def save(vocab, syn0, fo, binary):
-    print 'Saving model to', fo
+    print('Saving model to', fo)
     dim = len(syn0[0])
     if binary:
         fo = open(fo, 'wb')
@@ -421,15 +420,13 @@ def train(fi, fo, cbow, neg, dim, alpha, win, min_count, num_processes, binary):
     # Init net
     syn0, syn1 = init_net(dim, len(vocab))
 
-    nbnb = generate_nn_matrix(vocab)
-
     global_word_count = Value('i', 0)
     table = None
     if neg > 0:
-        print 'Initializing unigram table'
+        print('Initializing unigram table')
         table = UnigramTable(vocab)
     else:
-        print 'Initializing Huffman tree'
+        print('Initializing Huffman tree')
         vocab.encode_huffman()
 
     # Begin training using num_processes workers
@@ -439,14 +436,15 @@ def train(fi, fo, cbow, neg, dim, alpha, win, min_count, num_processes, binary):
                           win, num_processes, global_word_count, fi))
     pool.map(train_process, range(num_processes))
     t1 = time.time()
-    print
-    print 'Completed training. Training took', (t1 - t0) / 60, 'minutes'
+
+    print('Completed training. Training took', (t1 - t0) / 60, 'minutes')
 
     # Save model to file
     save(vocab, syn0, fo, binary)
 
 
 if __name__ == '__main__':
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument('-train', help='Training file', dest='fi', required=True)
     parser.add_argument('-model', help='Output model file', dest='fo', required=True)
@@ -460,6 +458,18 @@ if __name__ == '__main__':
     parser.add_argument('-binary', help='1 for output model in binary format, 0 otherwise', dest='binary', default=0, type=int)
     # TO DO: parser.add_argument('-epoch', help='Number of training epochs', dest='epoch', default=1, type=int)
     args = parser.parse_args()
+    """
+    argsfi = "./citeseer_n=80_l=40_w=10_topic85_walk.corpus"
+    argsfo = "./output.embedding"
+    argscbow = 1
+    argsneg = 5
+    argsdim = 128
+    argsalpha = 0.025
+    argswin = 1
+    argsmin_count = 0
+    argsnum_processes = 1
+    argsbinary = 0
 
-    train(args.fi, args.fo, bool(args.cbow), args.neg, args.dim, args.alpha, args.win,
-          args.min_count, args.num_processes, bool(args.binary))
+
+    train(argsfi, argsfo, bool(argscbow), argsneg, argsdim, argsalpha, argswin,
+          argsmin_count, argsnum_processes, bool(argsbinary))
